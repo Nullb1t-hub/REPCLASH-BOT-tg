@@ -85,3 +85,32 @@ body:before{background:radial-gradient(520px 320px at 8% 20%,rgba(124,58,237,.07
 /* REP COMBO + TERRITORY ENERGY */
 .combo-hud{min-height:0;display:flex;align-items:center;gap:9px;margin:9px 2px 0;padding:0 4px;overflow:hidden}.combo-hud:empty{display:none}.combo-hud b{font-size:12px;letter-spacing:.06em;color:#c4b5fd;text-shadow:0 0 18px rgba(139,92,246,.55);animation:comboPop .28s ease both}.combo-hud small{font-size:8px;color:#727986;letter-spacing:.08em}.combo-fire{font-size:18px;color:#a78bfa;text-shadow:0 0 18px rgba(139,92,246,.9);animation:comboFire .65s ease-in-out infinite}
 @keyframes comboPop{from{opacity:0;transform:translateY(7px) scale(.88)}to{opacity:1;transform:none}}@keyframes comboFire{50%{transform:scale(1.2) rotate(8deg);filter:brightness(1.3)}}
+
+/* REPCLASH BATTLE SYSTEMS — WALL / BREAK / MOMENTUM / HUD */
+.room-name-display{font-size:18px;font-weight:900;letter-spacing:-.02em;margin-top:16px;color:#fff;text-shadow:0 0 22px rgba(167,139,250,.18)}
+.room-item{position:relative}
+.room-open{background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 12px 35px rgba(0,0,0,.18)}
+.room-open b{font-size:14px}
+.attack-preview{position:absolute;z-index:4;left:18px;top:18px;padding:8px 10px;border-radius:10px;border:1px solid rgba(167,139,250,.16);background:rgba(8,6,13,.74);backdrop-filter:blur(12px);font-size:8px;letter-spacing:.08em;color:#c4b5fd;pointer-events:none}
+.mini-map{margin-top:10px;padding:10px;border:1px solid rgba(196,181,253,.10);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015))}
+.mini-map>span{display:block;font-size:7px;color:#737b88;letter-spacing:.14em;margin-bottom:7px}
+.mini-map-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;aspect-ratio:2.8/1}
+.mini-map-grid i{display:block;border-radius:2px;background:#151821;opacity:.7}
+.mini-map-grid i.wall{background:rgba(167,139,250,.28);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.mini-map-grid i.active{background:#a78bfa;box-shadow:0 0 10px rgba(167,139,250,.7)}
+.battle-momentum{margin-top:10px;padding:11px 12px;border:1px solid rgba(167,139,250,.13);border-radius:15px;background:linear-gradient(90deg,rgba(139,92,246,.10),rgba(255,255,255,.02));display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center}
+.battle-momentum span{font-size:7px;letter-spacing:.14em;color:#7f8794}.battle-momentum b{font-size:12px;color:#c4b5fd}.battle-momentum i{grid-column:1/-1;height:5px;border-radius:99px;background:#17141f;overflow:hidden}.battle-momentum em{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#6d28d9,#c4b5fd);box-shadow:0 0 15px rgba(139,92,246,.5)}
+.last-stand{margin-top:8px;padding:11px 12px;border-radius:14px;border:1px solid rgba(255,150,80,.24);background:linear-gradient(90deg,rgba(255,100,60,.13),rgba(139,92,246,.05));font-size:9px;font-weight:900;letter-spacing:.04em;animation:lastStandPulse .9s ease-in-out infinite}
+.heartbeat-hud{display:flex;align-items:center;gap:7px;margin-top:9px;padding:9px 11px;border:1px solid rgba(167,139,250,.11);border-radius:13px;background:rgba(255,255,255,.025);font-size:12px;color:#c4b5fd}
+.heartbeat-hud b{font-size:8px;letter-spacing:.12em}.heartbeat-hud span{font-size:8px;color:#727986;margin-left:auto}
+.heartbeat-hud b,.heartbeat-hud:first-letter{animation:heartbeat 1.25s ease-in-out infinite}
+.challenge-card{margin-top:9px;padding:12px;border:1px solid rgba(196,181,253,.10);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));display:grid;gap:6px}.challenge-card b{font-size:8px;color:#c4b5fd;letter-spacing:.1em}.challenge-card span{font-size:10px;color:#d7dae0;line-height:1.45}.challenge-card .ghost{width:100%}
+.local-commentator{min-height:0;margin-top:9px}.local-commentator:empty{display:none}.local-commentator b,.local-commentator span{display:block}.local-commentator b{font-size:7px;letter-spacing:.13em;color:#8d7bd8}.local-commentator span{margin-top:3px;font-size:10px;color:#b8bdc8}
+.active-tool{border-color:rgba(255,100,110,.4)!important;background:rgba(255,70,80,.10)!important}
+.camera-icon-pulse span{display:inline-block;animation:cameraIconLift 1.5s ease both}
+.camera-icon-pulse{box-shadow:0 0 0 1px rgba(167,139,250,.18),0 0 30px rgba(139,92,246,.18);transform-origin:center bottom;animation:cameraButtonPulse 1.5s ease both}
+@keyframes cameraButtonPulse{0%{transform:scale(1)}15%{transform:scale(1.025) translateY(-2px)}45%{transform:scale(1.045) translateY(-4px)}100%{transform:scale(1)}}
+@keyframes cameraIconLift{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-2px) scale(1.12)}55%{transform:translateY(-3px) scale(1.16)}100%{transform:translateY(0) scale(1)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.22)}28%{transform:scale(1)}42%{transform:scale(1.16)}56%{transform:scale(1)}}
+@keyframes lastStandPulse{50%{box-shadow:0 0 25px rgba(255,100,60,.12)}}
+@media(max-width:560px){.attack-preview{left:12px;top:12px;font-size:7px}.mini-map{padding:8px}.room-name-display{font-size:16px}}
