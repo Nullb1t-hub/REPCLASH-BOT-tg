@@ -81,3 +81,7 @@ body:before{background:radial-gradient(520px 320px at 8% 20%,rgba(124,58,237,.07
 .room-forget:hover{box-shadow:0 0 22px rgba(255,70,80,.08)}
 .hard-slider input{accent-color:#a78bfa}
 @media(max-width:560px){.hero-card,.panel,.rooms-panel,.camera-card{box-shadow:0 22px 65px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.04)}}
+
+/* REP COMBO + TERRITORY ENERGY */
+.combo-hud{min-height:0;display:flex;align-items:center;gap:9px;margin:9px 2px 0;padding:0 4px;overflow:hidden}.combo-hud:empty{display:none}.combo-hud b{font-size:12px;letter-spacing:.06em;color:#c4b5fd;text-shadow:0 0 18px rgba(139,92,246,.55);animation:comboPop .28s ease both}.combo-hud small{font-size:8px;color:#727986;letter-spacing:.08em}.combo-fire{font-size:18px;color:#a78bfa;text-shadow:0 0 18px rgba(139,92,246,.9);animation:comboFire .65s ease-in-out infinite}
+@keyframes comboPop{from{opacity:0;transform:translateY(7px) scale(.88)}to{opacity:1;transform:none}}@keyframes comboFire{50%{transform:scale(1.2) rotate(8deg);filter:brightness(1.3)}}
