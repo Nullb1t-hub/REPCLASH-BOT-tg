@@ -7,7 +7,7 @@ const MODEL="https://storage.googleapis.com/mediapipe-models/pose_landmarker/pos
 const WASM="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/wasm";
 function angle(a:{x:number;y:number},b:{x:number;y:number},c:{x:number;y:number}){const abx=a.x-b.x,aby=a.y-b.y,cbx=c.x-b.x,cby=c.y-b.y,dot=abx*cbx+aby*cby,mag=Math.hypot(abx,aby)*Math.hypot(cbx,cby);return mag?Math.acos(Math.max(-1,Math.min(1,dot/mag)))*180/Math.PI:180}
 export function PoseCamera({enabled,exercise,onRep}:Props){
- const videoRef=useRef<HTMLVideoElement>(null),streamRef=useRef<MediaStream|null>(null),landmarkerRef=useRef<PoseLandmarker|null>(null),animationRef=useRef<number>(),onRepRef=useRef(onRep),exerciseRef=useRef(exercise),phaseRef=useRef<"up"|"down">("up"),lastRepRef=useRef(0);
+ const videoRef=useRef<HTMLVideoElement>(null),streamRef=useRef<MediaStream|null>(null),landmarkerRef=useRef<PoseLandmarker|null>(null),animationRef=useRef<number|undefined>(undefined),onRepRef=useRef(onRep),exerciseRef=useRef(exercise),phaseRef=useRef<"up"|"down">("up"),lastRepRef=useRef(0);
  const[status,setStatus]=useState("КАМЕРА ГОТОВА"),[error,setError]=useState<string|null>(null),[rep,setRep]=useState(0),[hint,setHint]=useState("Встань так, чтобы всё тело было в кадре");
  useEffect(()=>{onRepRef.current=onRep},[onRep]);
  useEffect(()=>{exerciseRef.current=exercise;phaseRef.current="up"},[exercise]);
