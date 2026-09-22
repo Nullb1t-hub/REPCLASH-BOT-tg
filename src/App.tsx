@@ -1,4 +1,5 @@
 import{useEffect,useMemo,useRef,useState}from"react";
+import type{PointerEvent}from"react";
 import{Peer}from"peerjs";
 import{applyCapture,territoryCount}from"./game/board";
 import{BOARD_SIZES,TEAM_COLORS,type BoardSize,type CellState,type Exercise,type TeamColor}from"./game/types";
@@ -28,7 +29,7 @@ export default function App(){
   for(let y=0;y<visibleGrid;y++)for(let x=0;x<visibleGrid;x++){const i=y*visibleGrid+x,v=cells.get(i),owner=v?.owner;g.fillStyle=owner?TEAM_COLORS[owner]:"#151922";g.globalAlpha=owner?(.18+(v?.strength||1)*.16):1;g.fillRect(x*q+1,y*q+1,q-2,q-2)}
   g.globalAlpha=1;g.strokeStyle="#252a35";g.lineWidth=1;for(let i=0;i<=visibleGrid;i++){g.beginPath();g.moveTo(i*q,0);g.lineTo(i*q,w);g.stroke();g.beginPath();g.moveTo(0,i*q);g.lineTo(w,i*q);g.stroke()}
  },[cells,visibleGrid,screen]);
- const pick=(e:React.PointerEvent<HTMLCanvasElement>)=>{const r=e.currentTarget.getBoundingClientRect(),q=r.width/visibleGrid,x=Math.max(0,Math.min(visibleGrid-1,Math.floor((e.clientX-r.left)/q))),y=Math.max(0,Math.min(visibleGrid-1,Math.floor((e.clientY-r.top)/q)));setTarget(y*visibleGrid+x)};
+ const pick=(e:PointerEvent<HTMLCanvasElement>)=>{const r=e.currentTarget.getBoundingClientRect(),q=r.width/visibleGrid,x=Math.max(0,Math.min(visibleGrid-1,Math.floor((e.clientX-r.left)/q))),y=Math.max(0,Math.min(visibleGrid-1,Math.floor((e.clientY-r.top)/q)));setTarget(y*visibleGrid+x)};
  const reset=()=>{destroyPeer();setScreen("home");setRoom("");setConnected(false)};
  return <main className="app"><header className="topbar"><button className="icon-btn" onClick={reset}>R</button><div className="brand"><span>REP</span><b>CLASH</b></div><div className="top-actions"><button className="round-btn" onClick={()=>setLang(v=>v==="ru"?"en":"ru")}>{lang.toUpperCase()}</button><button className="round-btn" onClick={()=>setShowHelp(true)}>?</button></div></header>
  {screen==="home"&&<section className="home"><div className="hero-card"><div className="hero-kicker">REPCLASH / REAL-TIME FITNESS BATTLE</div><h1>{t("Сделай REP. Забери территорию.","Make a REP. Take the territory.")}</h1><p>{t("Камера считает технику. Каждый чистый повтор усиливает твою территорию.","AI checks your form. Every clean rep strengthens your territory.")}</p><div className="hero-actions"><button className="cta" onClick={()=>setScreen("setup")}>{t("СОЗДАТЬ БИТВУ","CREATE BATTLE")} <span>↗</span></button><button className="ghost" onClick={()=>setScreen("join")}>{t("ВОЙТИ ПО КОДУ","JOIN WITH CODE")}</button></div></div><div className="feature-row"><div><b>AI POSE</b><span>{t("Отжимания и приседания","Push-ups & squats")}</span></div><div><b>P2P</b><span>{t("Два игрока","Two players")}</span></div><div><b>100 → 100K</b><span>{t("Размер арены","Arena scale")}</span></div></div><button className="training-link" onClick={beginTraining}>▹ {t("Попробовать AI без соперника","Try AI without an opponent")}</button></section>}
