@@ -13,7 +13,8 @@ const RETRYABLE=new Set([408,429,500,502,503,504]);
 async function askGemini(apiKey:string,model:string,contents:unknown[]){
  for(let attempt=0;attempt<2;attempt++){
   try{
-   const response=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
+   const endpoint="https://generativelanguage.googleapis.com/v1beta/models/"+model+":generateContent";
+   const response=await fetch(endpoint,{
     method:"POST",
     headers:{"Content-Type":"application/json","x-goog-api-key":apiKey},
     body:JSON.stringify({systemInstruction:{parts:[{text:SYSTEM}]},contents,generationConfig:{maxOutputTokens:700}})
@@ -24,7 +25,7 @@ async function askGemini(apiKey:string,model:string,contents:unknown[]){
     if(text)return {text};
     return {error:"Gemini returned no text",status:502};
    }
-   const message=data?.error?.message||`Gemini request failed (${response.status})`;
+   const message=data?.error?.message||"Gemini request failed ("+response.status+")";
    if(!RETRYABLE.has(response.status))return {error:message,status:response.status};
    if(attempt===0)await sleep(800);
   }catch{
@@ -57,7 +58,6 @@ export async function POST(request:Request){
    lastStatus=result.status||lastStatus;
    if(!RETRYABLE.has(result.status||0))break;
   }
-
   return Response.json({error:lastError},{status:lastStatus});
  }catch{return Response.json({error:"AI service unavailable"},{status:500})}
 }
