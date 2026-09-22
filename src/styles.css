@@ -56,3 +56,28 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .rooms-panel{margin-top:12px;border:1px solid var(--line);background:linear-gradient(145deg,#101319,#0b0d11);border-radius:22px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .rooms-head{display:flex;align-items:center;justify-content:space-between}.rooms-head h3{margin:7px 0 0;font-size:22px;letter-spacing:-.03em}.rooms-head>span{width:34px;height:34px;border:1px solid var(--line);border-radius:11px;display:grid;place-items:center;color:#9da4af;font-size:11px;font-weight:900}.rooms-empty{color:#737b88;font-size:11px;line-height:1.6;margin:15px 0 2px}.rooms-list{display:grid;gap:8px;margin-top:14px}.room-item{display:flex;gap:8px;align-items:stretch}.room-open{flex:1;min-width:0;text-align:left;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);border-radius:15px;padding:12px 13px;transition:.2s}.room-open:hover{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.045);transform:translateY(-1px)}.room-open b,.room-open small{display:block}.room-open b{font-size:12px;letter-spacing:.08em}.room-open small{margin-top:5px;color:#727b88;font-size:9px}.room-forget{width:42px;border:1px solid rgba(255,255,255,.07);background:#11141a;border-radius:13px;color:#777f8b;font-size:19px}.room-forget:hover{color:#ff6974;border-color:rgba(255,90,100,.3);background:rgba(255,70,80,.06)}.difficulty-grid{grid-template-columns:repeat(3,1fr)}.hard-slider{margin-top:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:16px;padding:14px}.hard-slider>div:first-child{display:flex;justify-content:space-between;align-items:center;color:#858d99;font-size:10px}.hard-slider>div:first-child b{font-size:24px;color:#fff}.hard-slider input{width:100%;margin:12px 0 5px;accent-color:#fff}.slider-scale{display:flex;justify-content:space-between;color:#5f6773;font-size:8px}.waiting-meta{grid-template-columns:repeat(3,1fr)}
 @media(max-width:700px){.difficulty-grid{grid-template-columns:1fr}.waiting-meta{grid-template-columns:1fr 1fr}.room-open small{line-height:1.4}}
+
+/* Dark Glassmorphism Bento polish — preserves the existing REPCLASH layout */
+:root{--rc-purple:#8b5cf6;--rc-violet:#6d28d9;--rc-glass:rgba(255,255,255,.055);--rc-border:rgba(196,181,253,.14)}
+html,body{background:#07070a}
+body{background:radial-gradient(700px 420px at 8% -5%,rgba(124,58,237,.16),transparent 68%),radial-gradient(700px 460px at 95% 35%,rgba(139,92,246,.09),transparent 70%),radial-gradient(500px 360px at 45% 110%,rgba(76,29,149,.10),transparent 70%),#07070a}
+body:before{background:radial-gradient(520px 320px at 8% 20%,rgba(124,58,237,.07),transparent 70%),radial-gradient(560px 360px at 92% 80%,rgba(168,85,247,.055),transparent 70%)}
+.topbar{background:rgba(7,7,10,.72);border-bottom-color:rgba(196,181,253,.09);box-shadow:0 12px 45px rgba(0,0,0,.24),inset 0 -1px 0 rgba(139,92,246,.035)}
+.hero-card,.panel,.rooms-panel,.camera-card,.chat-modal{border-color:var(--rc-border);background:linear-gradient(145deg,rgba(25,20,34,.82),rgba(10,10,14,.76));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 28px 90px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.045),0 0 55px rgba(109,40,217,.035)}
+.hero-card{background:linear-gradient(135deg,rgba(30,22,43,.9),rgba(9,9,13,.82))}
+.hero-card:after{background:radial-gradient(circle,rgba(139,92,246,.13),rgba(139,92,246,0) 68%);filter:blur(3px)}
+.hero-card:before{border-color:rgba(167,139,250,.12);box-shadow:0 0 100px rgba(124,58,237,.13)}
+.feature-row div,.choice,.size-card,.room-open,.hard-slider,.camera-hint,.ai-welcome{border-color:rgba(196,181,253,.10);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.choice.selected,.size-card.selected{border-color:rgba(196,181,253,.48);box-shadow:0 12px 35px rgba(76,29,149,.18),0 0 25px rgba(139,92,246,.10)}
+.glass-cta,.camera-start{border-color:rgba(196,181,253,.25);background:linear-gradient(135deg,rgba(139,92,246,.24),rgba(255,255,255,.055));box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 14px 38px rgba(45,20,90,.22),0 0 30px rgba(124,58,237,.06)}
+.glass-cta:hover,.camera-start:hover{border-color:rgba(196,181,253,.48);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 18px 45px rgba(45,20,90,.28),0 0 35px rgba(139,92,246,.10)}
+.rep-wallet{border-color:rgba(196,181,253,.19);background:linear-gradient(145deg,rgba(139,92,246,.18),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 8px 28px rgba(0,0,0,.18),0 0 22px rgba(124,58,237,.07)}
+.arena-shell{background:linear-gradient(145deg,rgba(167,139,250,.16),rgba(255,255,255,.012));border-color:rgba(196,181,253,.13);box-shadow:0 20px 70px rgba(0,0,0,.28),0 0 50px rgba(109,40,217,.055)}
+.arena-toolbar{border-color:rgba(196,181,253,.13);background:rgba(12,9,18,.74);box-shadow:0 10px 30px rgba(0,0,0,.28),0 0 25px rgba(124,58,237,.07)}
+.camera-card.is-live{border-color:rgba(167,139,250,.28);box-shadow:0 30px 90px rgba(0,0,0,.4),0 0 45px rgba(124,58,237,.10)}
+.ai-dot{color:#a78bfa}.camera-scan{background:linear-gradient(90deg,transparent,rgba(167,139,250,.8),transparent);box-shadow:0 0 18px rgba(139,92,246,.55)}
+.target-dot{box-shadow:0 0 0 4px rgba(167,139,250,.10),0 0 28px rgba(167,139,250,.65)}
+.modal-backdrop{background:rgba(4,3,7,.76)}
+.room-forget:hover{box-shadow:0 0 22px rgba(255,70,80,.08)}
+.hard-slider input{accent-color:#a78bfa}
+@media(max-width:560px){.hero-card,.panel,.rooms-panel,.camera-card{box-shadow:0 22px 65px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.04)}}
