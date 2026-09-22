@@ -8,14 +8,14 @@ Tone: energetic, supportive, concise, like a premium game assistant.`;
 
 export async function POST(request:Request){
  try{
-  if(!process.env.GEMINI_API_KEY)return Response.json({error:"GEMINI_API_KEY is not configured"},{status:503});
+  if(!(globalThis as unknown as {process?:{env?:Record<string,string|undefined>}}).process?.env?.GEMINI_API_KEY)return Response.json({error:"GEMINI_API_KEY is not configured"},{status:503});
   const body=await request.json() as {messages?:ChatMessage[]};
   const messages=Array.isArray(body.messages)?body.messages.filter(m=>m&&("user"===m.role||"assistant"===m.role)&&typeof m.text==="string").slice(-12):[];
   if(!messages.length)return Response.json({error:"No messages"},{status:400});
   const contents=messages.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.text.slice(0,1800)}]}));
   const response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",{
    method:"POST",
-   headers:{"Content-Type":"application/json","x-goog-api-key":process.env.GEMINI_API_KEY},
+   headers:{"Content-Type":"application/json","x-goog-api-key":(globalThis as unknown as {process?:{env?:Record<string,string|undefined>}}).process?.env?.GEMINI_API_KEY},
    body:JSON.stringify({systemInstruction:{parts:[{text:SYSTEM}]},contents,generationConfig:{temperature:.65,maxOutputTokens:700}})
   });
   const data=await response.json() as any;
