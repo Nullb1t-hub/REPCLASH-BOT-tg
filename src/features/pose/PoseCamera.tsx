@@ -3,7 +3,7 @@ import{FilesetResolver,PoseLandmarker}from"@mediapipe/tasks-vision";
 import type{Exercise}from"../../game/types";
 type RepEvent={ok:boolean;reason?:string};
 type Props={enabled:boolean;exercise:Exercise;onRep:(event:RepEvent)=>void;onToggle:()=>void;sessionReps:number};
-const MODEL="https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/latest/pose_landmarker_lite.task";
+const MODEL="https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task";
 const WASM="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/wasm";
 function angle(a:{x:number;y:number},b:{x:number;y:number},c:{x:number;y:number}){const abx=a.x-b.x,aby=a.y-b.y,cbx=c.x-b.x,cby=c.y-b.y,dot=abx*cbx+aby*cby,mag=Math.hypot(abx,aby)*Math.hypot(cbx,cby);return mag?Math.acos(Math.max(-1,Math.min(1,dot/mag)))*180/Math.PI:180}
 export function PoseCamera({enabled,exercise,onRep,onToggle,sessionReps}:Props){
@@ -21,7 +21,7 @@ export function PoseCamera({enabled,exercise,onRep,onToggle,sessionReps}:Props){
    if(cancelled){stream.getTracks().forEach(t=>t.stop());return}
    streamRef.current=stream;if(videoRef.current){videoRef.current.srcObject=stream;await videoRef.current.play()}
    setStatus("ЗАГРУЗКА AI");const vision=await FilesetResolver.forVisionTasks(WASM);
-   let lm:PoseLandmarker;try{lm=await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL,delegate:"GPU"},runningMode:"VIDEO",numPoses:1,minPoseDetectionConfidence:.55,minPosePresenceConfidence:.55,minTrackingConfidence:.55})}catch{lm=await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL,delegate:"CPU"},runningMode:"VIDEO",numPoses:1,minPoseDetectionConfidence:.55,minPosePresenceConfidence:.55,minTrackingConfidence:.55})}
+   const lm=await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL,delegate:"CPU"},runningMode:"VIDEO",numPoses:1,minPoseDetectionConfidence:.55,minPosePresenceConfidence:.55,minTrackingConfidence:.55})
    if(cancelled){lm.close();return}landmarkerRef.current=lm;setStatus("AI ГОТОВ");setHint("Готово. Делай только чистые повторы.");
    const loop=()=>{if(cancelled||!videoRef.current||!landmarkerRef.current)return;const result=landmarkerRef.current.detectForVideo(videoRef.current,performance.now()),p=result.landmarks?.[0];
     if(p){const ls=p[11],le=p[13],lw=p[15],rs=p[12],re=p[14],rw=p[16],lh=p[23],rh=p[24],lk=p[25],rk=p[26],la=p[27],ra=p[28];
