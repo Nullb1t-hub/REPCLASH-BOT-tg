@@ -42,7 +42,7 @@ async function askGemini(apiKey:string,model:string,contents:unknown[]){
 export async function POST(request:Request){
  try{
   const env=(globalThis as unknown as {process?:{env?:Record<string,string|undefined>}}).process?.env;
-  const apiKey=env?.GEMINI_API_KEY||env?.GOOGLE_API_KEY;
+  const apiKey=env?.GEMINI_API_KEY||env?.GOOGLE_API_KEY||env?.GOOGLE_GENERATIVE_AI_API_KEY;
   if(!apiKey)return Response.json({error:"GEMINI_API_KEY is not configured on this deployment. Check Project Settings > Environment Variables, select Production, then redeploy."},{status:503});
 
   const body=await request.json() as {messages?:ChatMessage[]};
@@ -50,7 +50,7 @@ export async function POST(request:Request){
   if(!messages.length)return Response.json({error:"No messages"},{status:400});
 
   const contents=messages.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.text.slice(0,1800)}]}));
-  const models=["gemini-3.6-flash","gemini-3.5-flash-lite"];
+  const models=["gemini-3.8-flash","gemini-3.7-flash","gemini-3.6-flash","gemini-3.1-flash-lite"];
 
   let lastError="Gemini request failed";
   let lastStatus=502;
