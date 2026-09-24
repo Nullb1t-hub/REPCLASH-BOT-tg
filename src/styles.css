@@ -251,3 +251,44 @@ button,input,select{font-family:inherit}
 @keyframes shopNeon{50%{box-shadow:inset 0 0 34px rgba(139,92,246,.30),0 0 28px rgba(139,92,246,.18)}}@keyframes glitchFrame{50%{transform:translate(2px,-1px) rotate(-7deg);opacity:.45}}
 @media(max-width:430px){.top-actions{gap:4px}.top-actions .round-btn{width:34px;height:34px}.rep-wallet{min-width:58px}.points-wallet{min-width:66px;padding:0 7px}.points-wallet b{font-size:11px}.points-wallet small{display:none}.shop-item{grid-template-columns:54px minmax(0,1fr) auto;padding:9px}.shop-preview{width:52px;height:52px}.shop-item>button{padding:8px 8px}.shop-copy b{font-size:11px}.shop-copy span{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.points-wallet:before,.shop-preview.effect-pulse,.shop-preview.skin-neon,.shop-preview.effect-glitch,.training-launch-card:before,.training-launch-card .training-orb{animation:none!important}}
+
+
+/* Simplified REPCLASH release: FAQ + camera-first training */
+.bottom-nav-two{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:min(320px,calc(100vw - 28px))!important}
+.help-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.faq-backdrop{z-index:300;padding:calc(18px + env(safe-area-inset-top)) 14px calc(18px + env(safe-area-inset-bottom))}
+.faq-modal{width:min(620px,100%);max-height:min(84dvh,850px);display:flex;flex-direction:column;overflow:hidden;padding:22px}
+.faq-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding-right:36px}
+.faq-head h2{font-size:clamp(23px,5vw,31px);line-height:1.08;margin:12px 0 8px}
+.faq-head p{margin:0 0 14px}
+.faq-head .modal-x{position:absolute;right:14px;top:14px}
+.faq-list{overflow:auto;display:grid;gap:8px;padding:2px 3px 12px;overscroll-behavior:contain}
+.faq-item{border:1px solid rgba(196,181,253,.14);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(139,92,246,.035));overflow:hidden}
+.faq-item summary{display:grid;grid-template-columns:30px minmax(0,1fr) 20px;align-items:center;gap:9px;list-style:none;cursor:pointer;padding:13px 14px;min-height:54px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary>span{font-size:10px;color:#bda6ff;font-weight:900;letter-spacing:.08em}
+.faq-item summary>b{font-size:12px;line-height:1.4;font-weight:750}
+.faq-item summary>i{font-style:normal;color:#c4b5fd;font-size:18px;transition:transform .2s}
+.faq-item[open] summary>i{transform:rotate(45deg)}
+.faq-item>p{margin:0!important;padding:0 16px 15px 53px;color:#a7a2b5!important;font-size:12px!important;line-height:1.65!important}
+.faq-modal>.full{flex:none;margin-top:7px}
+.camera-card{position:relative;isolation:isolate}
+.camera-card.is-live{position:fixed!important;inset:0!important;z-index:9999!important;width:100vw!important;height:100dvh!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#030306!important;overflow:hidden!important;box-shadow:none!important}
+.camera-card.is-live:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,4,10,.72),transparent 25%,transparent 56%,rgba(5,4,10,.88) 100%)}
+.camera-card.is-live .camera-head{position:absolute;z-index:3;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border:1px solid rgba(196,181,253,.20);border-radius:18px;background:rgba(11,9,18,.68);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.camera-card.is-live .camera-head .eyebrow{display:block;margin-bottom:5px;color:#b9a2ff}
+.camera-card.is-live .camera-head b{font-size:11px;letter-spacing:.06em}
+.camera-card.is-live .camera-balance{min-width:65px;padding:6px 10px;border-radius:12px;background:rgba(139,92,246,.18);text-align:center}
+.camera-card.is-live .camera-balance small{display:block;font-size:8px;color:#c7b7f6}
+.camera-card.is-live .camera-balance strong{font-size:25px;line-height:1.1}
+.camera-card.is-live .camera-wrap{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;background:#030306}
+.camera-card.is-live .camera-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.camera-card.is-live .camera-overlay{inset:0;border-radius:0;opacity:.42}
+.camera-card.is-live .camera-scan{opacity:.32}
+.camera-card.is-live .camera-idle{border-radius:24px}
+.camera-card.is-live .camera-status{position:absolute;z-index:3;left:14px;right:14px;bottom:calc(112px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin:0;padding:12px 14px;border:1px solid rgba(196,181,253,.16);border-radius:15px;background:rgba(10,8,16,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-size:9px;color:#d4cbe9}
+.camera-card.is-live .camera-hint{position:absolute;z-index:3;left:14px;right:14px;bottom:calc(67px + env(safe-area-inset-bottom));margin:0;padding:0 4px;color:#f2edff;font-size:12px;line-height:1.4;text-shadow:0 2px 10px #000}
+.camera-card.is-live .camera-start{position:absolute;z-index:4;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom));width:calc(100% - 28px);min-height:49px;margin:0;border-radius:16px;font-size:11px;box-shadow:0 10px 35px rgba(0,0,0,.4),0 0 26px rgba(139,92,246,.20)!important}
+.camera-card.is-live .camera-foot{display:none}
+.camera-error{z-index:5;position:absolute;left:14px;right:14px;bottom:calc(180px + env(safe-area-inset-bottom));max-height:30%;overflow:auto;padding:14px;border:1px solid rgba(255,95,110,.28);border-radius:16px;background:rgba(45,10,18,.9);color:#ffdbe0;font-size:12px;line-height:1.5}
+@media(max-width:430px){.help-modal-actions{grid-template-columns:1fr}.faq-modal{padding:18px}.faq-item summary{padding:12px 11px;grid-template-columns:25px minmax(0,1fr) 18px;gap:7px}.faq-item>p{padding-left:43px}.camera-card.is-live .camera-head{left:10px;right:10px}.camera-card.is-live .camera-status,.camera-card.is-live .camera-hint{left:10px;right:10px}.camera-card.is-live .camera-start{left:10px;width:calc(100% - 20px);right:10px}}
