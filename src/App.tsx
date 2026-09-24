@@ -4,7 +4,7 @@ import{Peer}from"peerjs";
 import{applyCapture,canCapture,cellCoords,cellKey,territoryCount}from"./game/board";
 import{BOARD_SIZES,TEAM_COLORS,type BoardSize,type CellState,type Difficulty,type Exercise,type TeamColor}from"./game/types";
 import{PoseCamera}from"./features/pose/PoseCamera";
-import{initTelegram,telegramUserName}from"./telegram";
+import{initTelegram,telegramUserName,openTelegramLink}from"./telegram";
 type Screen="home"|"setup"|"waiting"|"join"|"battle"|"training";
 type Packet={type:"hello"|"config"|"rep"|"break";name?:string;roomName?:string;exercise?:Exercise;size?:BoardSize;color?:TeamColor;difficulty?:Difficulty;hardRepTarget?:number;index?:number;cells?:[number,CellState][]};
 type RoomRecord={code:string;name:string;exercise:Exercise;size:BoardSize;color:TeamColor;difficulty:Difficulty;hardRepTarget:number;createdAt:number};
