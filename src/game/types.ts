@@ -1,9 +1,9 @@
-export type TeamColor="red"|"blue"|"green"|"pink"|"orange";
+export type TeamColor="red"|"blue"|"green"|"pink"|"orange"|"yellow"|"purple"|"cyan"|"lime"|"gold";
 export type BoardSize=100|1000|10000|100000;
 export type Exercise="pushup"|"squat";
 export type Difficulty="easy"|"normal"|"hard";
 export type CellOwner=TeamColor|null;
 export type CellState={owner:CellOwner;strength:0|1|2};
 export type Player={name:string;reps:number;territory:number};
-export const TEAM_COLORS:Record<TeamColor,string>={red:"#ff3b30",blue:"#3b82f6",green:"#22c55e",pink:"#ec4899",orange:"#ff7a00"};
+export const TEAM_COLORS:Record<TeamColor,string>={red:"#ff3b30",blue:"#3b82f6",green:"#22c55e",pink:"#ec4899",orange:"#ff7a00",yellow:"#facc15",purple:"#a855f7",cyan:"#06b6d4",lime:"#84cc16",gold:"#d4a017"};
 export const BOARD_SIZES:BoardSize[]=[100,1000,10000,100000];
