@@ -9,7 +9,6 @@ type Screen="home"|"setup"|"waiting"|"join"|"battle"|"training";
 type Packet={type:"hello"|"config"|"rep"|"break";name?:string;roomName?:string;exercise?:Exercise;size?:BoardSize;color?:TeamColor;difficulty?:Difficulty;hardRepTarget?:number;index?:number;cells?:[number,CellState][]};
 type RoomRecord={code:string;name:string;exercise:Exercise;size:BoardSize;color:TeamColor;difficulty:Difficulty;hardRepTarget:number;createdAt:number};
 type Profile={name:string;avatar:string;username?:string};type RoomCosmetics={skin?:string;color?:string;effect?:string};
-const uid=()=>Math.random().toString(36).slice(2,8).toUpperCase();
 const peerIdForCode=(code:string)=>{const match=code.trim().toUpperCase().match(/^RC-(\d{5})$/);return match?`rc${match[1]}`:code.trim().toLowerCase()};
 const labels={pushup:["Отжимания","Push-ups"],squat:["Приседания","Squats"]};
 export default function App(){
