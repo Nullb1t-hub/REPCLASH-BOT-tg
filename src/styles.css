@@ -388,3 +388,50 @@ button,input,select{font-family:inherit}
  .faq-answer{padding:0 11px 13px 42px!important}
  .faq-answer>p{font-size:12px!important;line-height:1.55!important}
 }
+
+
+/* REPCLASH — capture energy + focused challenge UI */
+.arena-energy-burst{position:absolute;z-index:8;width:1px;height:1px;transform:translate(-50%,-50%);pointer-events:none;color:var(--burst-color,#a78bfa);filter:drop-shadow(0 0 8px var(--burst-color))}
+.arena-energy-burst:before,.arena-energy-burst:after{content:"";position:absolute;left:0;top:0;width:clamp(42px,9vw,92px);height:clamp(42px,9vw,92px);border:2px solid var(--burst-color);border-radius:24%;transform:translate(-50%,-50%) rotate(45deg);animation:rcEnergyRing .78s cubic-bezier(.12,.7,.25,1) both}
+.arena-energy-burst:after{width:clamp(26px,5.5vw,60px);height:clamp(26px,5.5vw,60px);border-color:rgba(255,255,255,.95);animation-delay:.06s}
+.arena-energy-burst b{position:absolute;left:0;top:0;transform:translate(-50%,-50%);font-size:clamp(24px,5vw,48px);color:#fff;text-shadow:0 0 8px #fff,0 0 20px var(--burst-color);animation:rcEnergyCore .58s ease-out both}
+.arena-energy-burst i{position:absolute;left:0;top:0;width:5px;height:15px;border-radius:5px;background:linear-gradient(#fff,var(--burst-color));box-shadow:0 0 10px var(--burst-color);animation:rcEnergySpark .7s cubic-bezier(.12,.7,.25,1) both}
+.arena-energy-burst i:nth-of-type(1){--sx:0px;--sy:-44px}
+.arena-energy-burst i:nth-of-type(2){--sx:36px;--sy:-22px;animation-delay:.025s}
+.arena-energy-burst i:nth-of-type(3){--sx:40px;--sy:24px;animation-delay:.05s}
+.arena-energy-burst i:nth-of-type(4){--sx:0px;--sy:42px;animation-delay:.075s}
+.arena-energy-burst i:nth-of-type(5){--sx:-38px;--sy:22px;animation-delay:.1s}
+.arena-energy-burst i:nth-of-type(6){--sx:-38px;--sy:-22px;animation-delay:.125s}
+@keyframes rcEnergyRing{0%{opacity:.95;transform:translate(-50%,-50%) rotate(45deg) scale(.15)}65%{opacity:.85}100%{opacity:0;transform:translate(-50%,-50%) rotate(135deg) scale(1.9)}}
+@keyframes rcEnergyCore{0%{opacity:0;scale:.2}25%{opacity:1;scale:1.25}100%{opacity:0;scale:.55}}
+@keyframes rcEnergySpark{0%{opacity:0;transform:translate(-50%,-50%) rotate(0) scaleY(.2)}20%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) rotate(55deg) scaleY(.8)}}
+.challenge-actions{display:grid;grid-template-columns:minmax(0,1fr) 68px;gap:10px;margin:14px 0 4px}
+.challenge-get,.challenge-log-button{min-width:0;min-height:74px;border:1px solid rgba(196,181,253,.19);border-radius:18px;background:linear-gradient(140deg,rgba(139,92,246,.17),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 28px rgba(0,0,0,.18);display:flex;align-items:center;gap:12px;padding:12px;text-align:left;transition:transform .18s,border-color .18s}
+.challenge-get:active,.challenge-log-button:active{transform:scale(.98)}
+.challenge-get:disabled{opacity:.68;cursor:default}
+.challenge-get-icon{flex:0 0 42px;width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#a78bfa,#6d28d9);box-shadow:0 0 22px rgba(139,92,246,.25);font-size:20px}
+.challenge-get>span:nth-child(2){display:grid;gap:5px;min-width:0;flex:1}
+.challenge-get small,.challenge-log-button small{font-size:8px;letter-spacing:.12em;color:#a9a0bd;font-weight:900}
+.challenge-get b{font-size:13px;line-height:1.25;color:#f5f1ff;overflow-wrap:anywhere}
+.challenge-get strong{font-size:20px;color:#c4b5fd}
+.challenge-log-button{padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-align:center;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(139,92,246,.11))}
+.challenge-log-button span{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(196,181,253,.22);border-radius:11px;background:rgba(139,92,246,.15);font-size:21px;color:#d8c8ff}
+.challenge-log-button small{font-size:7px}
+.challenge-modal{max-height:min(86dvh,720px);overflow:auto;padding:25px 22px 22px;background:radial-gradient(circle at 50% 0,rgba(139,92,246,.18),transparent 42%),linear-gradient(145deg,#14121d,#0c0d13);border-color:rgba(196,181,253,.22)}
+.challenge-modal h2{font-size:clamp(25px,6vw,32px);margin:12px 0 20px}
+.challenge-status-pill{display:inline-flex;align-items:center;min-height:27px;padding:6px 10px;border:1px solid rgba(196,181,253,.22);border-radius:999px;background:rgba(139,92,246,.12);color:#c4b5fd;font-size:9px;font-weight:900;letter-spacing:.1em}
+.challenge-mission-icon{display:grid;place-items:center;width:74px;height:74px;margin:20px auto 12px;border:1px solid rgba(196,181,253,.22);border-radius:24px;background:radial-gradient(circle,rgba(167,139,250,.25),rgba(139,92,246,.06));box-shadow:0 0 42px rgba(139,92,246,.12);font-size:36px;color:#d8c8ff}
+.challenge-modal h3{text-align:center;font-size:20px;margin:10px 0}
+.challenge-mission-text{text-align:center;margin:8px 0 24px!important;font-size:14px!important;color:#c6c1d2!important}
+.challenge-progress-label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 9px;color:#a7a0b5;font-size:11px}
+.challenge-progress-label b{color:#f5f1ff;font-size:13px}
+.challenge-progress-track{height:11px;overflow:hidden;border-radius:999px;background:#24202f;border:1px solid rgba(196,181,253,.12)}
+.challenge-progress-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#7c3aed,#c4b5fd);box-shadow:0 0 18px rgba(167,139,250,.45);transition:width .28s ease}
+.challenge-progress-note{margin:12px 0 22px!important;font-size:11px!important;line-height:1.6!important}
+.challenge-empty{text-align:center;padding:18px 0 20px}
+.challenge-empty>div{display:grid;place-items:center;width:66px;height:66px;margin:0 auto 15px;border-radius:21px;background:rgba(139,92,246,.14);border:1px solid rgba(196,181,253,.2);font-size:30px;color:#c4b5fd}
+.challenge-empty p{max-width:360px;margin:8px auto 18px}
+.challenge-modal-cta{min-height:52px;font-size:11px;line-height:1.4}
+.challenge-modal-cta:disabled{opacity:.55;filter:saturate(.6);cursor:not-allowed}
+@media(max-width:420px){.challenge-actions{grid-template-columns:minmax(0,1fr) 60px;gap:8px}.challenge-get{gap:9px;padding:10px;min-height:68px}.challenge-get-icon{width:36px;height:36px;flex-basis:36px}.challenge-get b{font-size:11px}.challenge-log-button{min-height:68px}.challenge-modal{padding:22px 16px 17px}}
+@media(prefers-reduced-motion:reduce){.arena-energy-burst *,.arena-energy-burst:before,.arena-energy-burst:after{animation-duration:.01ms!important}}
