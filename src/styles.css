@@ -361,3 +361,9 @@ button,input,select{font-family:inherit}
 @keyframes faqReveal{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:360px){.rooms-grid{gap:8px}.room-tile,.room-tile-open{min-height:136px}.room-tile-open,.room-add{padding:12px 10px}.room-tile-open>b,.room-add>b{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.room-add:after{animation:none}.faq-answer{animation:none}}
+
+/* Color selector: four defaults plus a compact expandable six-color palette */
+.color-more{display:grid;place-items:center;border:1px dashed rgba(196,181,253,.5)!important;background:rgba(139,92,246,.12)!important;color:#d8c6ff!important;font-size:23px;font-weight:400;line-height:1}
+.color-palette{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;padding:12px;border:1px solid rgba(196,181,253,.17);border-radius:16px;background:rgba(13,11,22,.82);animation:faqReveal .18s ease-out}
+.color-palette .color-btn{flex:0 0 34px;width:34px;height:34px}
+.color-btn.active{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px rgba(167,139,250,.2),0 0 22px currentColor}
