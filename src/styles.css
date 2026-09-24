@@ -326,3 +326,9 @@ button,input,select{font-family:inherit}
 .faq-answer{display:block;min-width:0;padding:0 14px 14px 51px;}
 .faq-answer>p{margin:0!important;padding:0!important;color:#b8b2c5!important;font-size:12px!important;line-height:1.65!important;overflow-wrap:anywhere;white-space:normal;}
 @media(max-width:430px){.brand-mark{font-size:16px!important;letter-spacing:.075em!important}.faq-modal{padding:16px!important}.faq-question{grid-template-columns:23px minmax(0,1fr) 18px;gap:7px;padding:12px 10px}.faq-question>span{width:23px;font-size:9px}.faq-question>b{font-size:12px;line-height:1.42}.faq-answer{padding:0 11px 13px 40px}.faq-answer>p{font-size:11px!important;line-height:1.6!important}}
+
+
+/* Camera overlay is portaled to body: lock the viewport and prevent accidental drag/scroll */
+.camera-card.is-live{position:fixed!important;inset:0!important;z-index:2147483000!important;width:100vw!important;height:100dvh!important;height:100svh!important;min-height:100dvh!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;overflow:hidden!important;overscroll-behavior:none!important;touch-action:none!important;}
+.camera-card.is-live .camera-wrap,.camera-card.is-live video{touch-action:none!important;user-select:none!important;-webkit-user-select:none!important;-webkit-user-drag:none!important;}
+.camera-card.is-live .camera-start{touch-action:manipulation!important;}
