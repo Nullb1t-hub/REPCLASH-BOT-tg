@@ -309,3 +309,20 @@ button,input,select{font-family:inherit}
 .faq-answer[hidden]{display:none!important}
 .faq-answer>p{margin:0!important;padding:0 16px 15px 53px;color:#a7a2b5!important;font-size:12px!important;line-height:1.65!important}
 @media(max-width:430px){.faq-question{padding:12px 11px;grid-template-columns:25px minmax(0,1fr) 18px;gap:7px}.faq-answer>p{padding-left:43px}}
+
+
+/* Stable FAQ layout + refined compact REPCLASH wordmark */
+.brand-mark{display:flex;align-items:center;gap:0;flex:0 0 auto;font-size:18px!important;line-height:1;letter-spacing:.105em!important;white-space:nowrap;text-shadow:0 0 22px rgba(167,139,250,.12)}
+.brand-mark span{font-weight:800!important;color:#a78bfa!important}
+.brand-mark b{font-weight:900!important;color:#f7f4ff!important}
+.faq-list{min-width:0;width:100%;}
+.faq-item{display:block;min-width:0;width:100%;}
+.faq-question{appearance:none;list-style:none;width:100%;min-width:0;display:grid;grid-template-columns:27px minmax(0,1fr) 20px;align-items:center;gap:10px;padding:13px 14px;margin:0;border:0;background:transparent;color:#f4f0ff;text-align:left;cursor:pointer;white-space:normal;}
+.faq-question::-webkit-details-marker{display:none}
+.faq-question>span{display:block;width:27px;text-align:center;font-size:10px;line-height:1.4;color:#bda6ff;font-weight:900;letter-spacing:.06em}
+.faq-question>b{display:block;min-width:0;max-width:100%;font-size:clamp(11px,2.8vw,13px);line-height:1.45;font-weight:700;white-space:normal;overflow-wrap:anywhere;word-break:normal;}
+.faq-question>i{display:grid;place-items:center;width:20px;height:24px;font-style:normal;color:#c4b5fd;font-size:19px;line-height:1;transition:transform .18s ease}
+.faq-item[open]>.faq-question>i{transform:rotate(45deg)}
+.faq-answer{display:block;min-width:0;padding:0 14px 14px 51px;}
+.faq-answer>p{margin:0!important;padding:0!important;color:#b8b2c5!important;font-size:12px!important;line-height:1.65!important;overflow-wrap:anywhere;white-space:normal;}
+@media(max-width:430px){.brand-mark{font-size:16px!important;letter-spacing:.075em!important}.faq-modal{padding:16px!important}.faq-question{grid-template-columns:23px minmax(0,1fr) 18px;gap:7px;padding:12px 10px}.faq-question>span{width:23px;font-size:9px}.faq-question>b{font-size:12px;line-height:1.42}.faq-answer{padding:0 11px 13px 40px}.faq-answer>p{font-size:11px!important;line-height:1.6!important}}
